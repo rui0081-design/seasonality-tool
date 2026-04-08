@@ -1,60 +1,45 @@
-# Google Trends 季節性分析ツール
+# Google Trends 季節性分解ツール
 
-Google Trendsの検索指数を使って、キーワードの
-- 長期トレンド
-- 月別の季節性
-- 直近の実力（季節調整後）
-- 前年比 / 季節調整後前年比
+キーワードの検索需要を、長期トレンドと月ごとの季節性に分けて見られるStreamlitアプリです。
 
-を一画面で確認できるStreamlitアプリです。
-
-## 主な機能
-- Google Trendsからデータ取得（pytrends）
-- 季節性分解（trend / seasonal / residual）
-- 月別季節指数の可視化
-- 季節調整値の算出
-- 前年比 / 季節調整後前年比
-- サマリー自動生成
-- Excel / CSV / PNG ダウンロード
-
-## 画面で見られるもの
-- 検索需要の推移（実績 / 季節調整後 / 長期トレンド）
-- 月別季節指数
-- 月別季節指数テーブル
-- 直近結果テーブル
-- 強い月 / 弱い月 / 実力評価 / 施策示唆のサマリー
-
-## Excel出力の内容
-- `summary`
-- `seasonality_by_month`
-- `result_detail`
-- `metric_guide`
-- `how_to_read`
-
-列幅、ヘッダー色、固定表示、フィルタなどを整えています。
+## できること
+- Google Trendsから検索指数を取得
+- CSVをアップロードして同じ分析を実行
+- 長期トレンドと季節調整後の比較
+- 月別の強い月 / 弱い月の可視化
+- Excel / CSV / PNG のダウンロード
+- Excelに「指標の説明」シートを自動追加
 
 ## ファイル構成
 - `app.py` : アプリ本体
 - `requirements.txt` : 必要ライブラリ
-- `.streamlit/config.toml` : Streamlitテーマ設定
-- `README.md` : 説明
-- `DEPLOY_GUIDE_JP.md` : GitHub / Streamlit Cloud公開手順
-- `.gitignore` : Git管理用
+- `.streamlit/config.toml` : テーマ設定
+- `.gitignore` : GitHub用の除外設定
 
-## ローカル起動
+## ローカルで起動する
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## 使い方
-1. Keyword を入力
-2. 地域 / 期間を選択
-3. 必要なら詳細設定を開く
-4. 分析開始
-5. グラフ確認後、Excel / CSV / PNG をダウンロード
+## GitHubにアップする手順
+1. GitHubで新しいリポジトリを作る
+2. このフォルダの中身をそのままアップする
+3. `app.py` がリポジトリ直下にある状態にする
 
-## 補足
-- Google Trendsの仕様上、取得が一時的に失敗することがあります
-- その場合は少し待つか、期間やKeywordを見直してください
-- 季節性分析には24か月以上の月次データが必要です
+## URL公開する手順（Streamlit）
+1. Streamlitのデプロイ画面を開く
+2. GitHub連携を行う
+3. 対象リポジトリを選ぶ
+4. Main file path に `app.py` を指定する
+5. Deploy を押す
+
+## 公開前の最終確認
+- Keywordを入れて実行できるか
+- Excel / CSV / PNG が保存できるか
+- CSVアップロードでも動くか
+- 日本語グラフが崩れていないか
+
+## 注意
+- Google Trends側が混み合うと、一時的に取得失敗することがあります
+- その場合は少し待って再実行するか、期間を短くしてください
