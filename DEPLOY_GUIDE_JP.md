@@ -1,25 +1,26 @@
-# 1分デプロイガイド
+# Streamlit Cloud 公開手順
 
-## 最短ルート
-1. GitHubで新規リポジトリ作成
-2. このフォルダ内のファイルを全部アップロード
-3. Streamlitのデプロイ画面でそのリポジトリを選択
-4. `app.py` を指定して公開
-5. 発行されたURLを配布
+## 1. GitHubへアップロード
+このフォルダの中身をそのままGitHubリポジトリ直下に置いてください。
 
-## GitHubに置くもの
-- app.py
-- requirements.txt
-- README.md
-- .streamlit/config.toml
-- .gitignore
+必要な状態
+- `app.py` がルートにある
+- `requirements.txt` がルートにある
+- `.streamlit/config.toml` がある
 
-## ハマりやすいポイント
-- `app.py` がフォルダの中に入りすぎている
-- requirements.txt をアップしていない
-- 公開後すぐは初回起動に少し時間がかかる
+## 2. Streamlit Cloudでデプロイ
+1. Streamlit Cloud にログイン
+2. GitHub リポジトリを選択
+3. Main file path に `app.py` を指定
+4. Deploy を実行
 
-## 迷ったら
-- Main file path は `app.py`
-- Python versionは通常そのままでOK
-- URLが出たらそれが配布用リンク
+## 3. 公開前の確認
+- Keyword入力が最初にわかりやすいか
+- Google Trends取得が通るか
+- グラフが同サイズで表示されるか
+- 日本語が文字化けしないか
+- Excel / CSV / PNG が正常にダウンロードできるか
+
+## 4. よくある注意
+- Google Trendsの429制限が出る場合は時間を空けて再実行
+- 12か月では前年比が十分に見えない場合があるため、基本は3年または5年推奨
